@@ -1,0 +1,2 @@
+# mercado
+### a Sails application
