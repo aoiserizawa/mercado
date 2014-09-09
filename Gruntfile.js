@@ -63,7 +63,9 @@ module.exports = function (grunt) {
     // All of the rest of your app scripts imported here
     'linker/**/*.js',
 
-    'js/bootstrap/*.js'
+    'js/bootstrap/*.js',
+
+    'js/jquery.validate.min.js'
   ];
 
 
