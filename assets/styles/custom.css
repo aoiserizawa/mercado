@@ -17,3 +17,9 @@ border-radius: 15px;
     margin-bottom: 15px;
     padding: 7px 9px;
 }
+
+/*partials user left panel*/
+.util-pannel-left{
+    width: 230px;
+}
+/*end left panel*/

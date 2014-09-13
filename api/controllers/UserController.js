@@ -17,8 +17,11 @@
 
 
 var UserController = {
+    'index': function (req, res) {
+        res.view('home/index');
+    },
     'new': function( req, res){
-        res.view('user/new');
+        res.view();
     }
 };
 

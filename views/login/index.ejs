@@ -1,0 +1,19 @@
+<form action="/session/create" method="POST" class="form-signin">
+  <h3 class="form-signin-heading">Sign in to start supplying </h3>
+  
+  <% if(typeof flash !== "undefined" && flash.err) { %>
+        <ul class="flash alert alert-success">
+    <% _.each(flash.err, function(error) { %>
+        <li><%- error.message %></li>
+    <% }) %>
+    </ul>
+  <% } %>
+
+  <input type="text" class="form-control" placeholder="Email address" name="email">
+  <input type="password" class="form-control" placeholder="Password" name="password">
+  <input type="submit" class="btn btn-lg btn-primary btn-block" value="Sign-in"/>
+  <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+  <div class="pull-right">
+    <a href="/user/new">Sign-up </a>
+  </div>
+</form>
