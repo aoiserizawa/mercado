@@ -3,10 +3,10 @@
    
     
     <% if(typeof flash !== "undefined" && flash.err) { %>
-        <ul class="alert alert-success">
-    <% Object.keys(flash.err).forEach(function(error) { %>
-        <li><%- JSON.stringify(flash.err[error]) %></li>
-    <% }) %>
+    <ul class="alert alert-danger">
+        <% _.each(flash.err, function(error) { %>
+        <li><%- error.message %></li>
+        <% }) %>
     </ul>
     <% } %>
 

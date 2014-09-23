@@ -22,6 +22,49 @@ var UserController = {
     },
     'new': function( req, res){
         res.view();
+    },
+    create: function( req, res, next){
+        var userObj = {
+          name: 		req.param('name'),
+          username: 	req.param('username'),
+          email: 		req.param('email'),
+          password: 	req.param('password'),
+          confirmation: req.param('confirmation')
+        };
+
+        User.create(userObj, function (err, user){
+            
+            var emailExist = [{name:'emailExist', message:'The Email is already in use'}];
+
+            if(err){
+                console.log(err.code);
+                if(err.code === 11000 ){
+                	console.log("email exist");
+                	req.session.flash ={
+                    	err: emailExist
+                	};
+                }else{
+                	req.session.flash ={
+                   		err: err
+                	};
+                }
+                  // Object.keys(err).forEach(function(error) {
+                  //     //console.log(Object.keys(err[error]));
+                  //     console.log(err[error]);
+                  // });
+
+                  // console.log(Object.keys(err));
+
+                return res.redirect('/user/new/');
+            }
+
+            req.session.authenticated = true;
+            req.session.User = user;
+
+            console.log(req.session.User);
+
+            res.redirect('/');
+        });
     }
 };
 
